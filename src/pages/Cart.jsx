@@ -1,9 +1,50 @@
 import React from 'react';
 import { useCart } from '../context/CartContext';
 import { Link } from 'react-router-dom';
+import Swal from 'sweetalert2'; 
 
 export default function Cart() {
   const { cart, updateQuantity, removeFromCart, cartTotal } = useCart();
+
+  const handleDeleteConfirm = (id, color, size, name) => {
+    Swal.fire({
+      title: 'Are you sure?',
+      text: `Do you want to remove "${name} (${color} - ${size})" from your cart?`,
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#ef4444', 
+      cancelButtonColor: '#6b7280', 
+      confirmButtonText: 'Yes, remove it!',
+      cancelButtonText: 'No, keep it',
+      background: '#ffffff',
+      customClass: {
+        popup: 'rounded-2xl shadow-xl border border-gray-100 p-6',
+        title: 'text-xl font-bold text-gray-950',
+        htmlContainer: 'text-xs text-gray-500 mt-2',
+        confirmButton: 'px-5 py-2.5 text-xs font-bold tracking-wider rounded-xl focus:outline-none',
+        cancelButton: 'px-5 py-2.5 text-xs font-bold tracking-wider rounded-xl focus:outline-none'
+      }
+    }).then((result) => {
+      if (result.isConfirmed) {
+        removeFromCart(id, color, size);
+        
+        Swal.fire({
+          title: 'Removed!',
+          text: 'The item has been removed from your cart.',
+          icon: 'success',
+          timer: 1500,
+          showConfirmButton: false,
+          confirmButtonColor: '#4f46e5',
+          background: '#ffffff',
+          customClass: {
+            popup: 'rounded-2xl shadow-md p-4',
+            title: 'text-lg font-bold text-gray-950',
+            htmlContainer: 'text-xs text-gray-500'
+          }
+        });
+      }
+    });
+  };
 
   if (cart.length === 0) {
     return (
@@ -41,7 +82,11 @@ export default function Cart() {
                   <span className="px-3 text-xs font-bold text-gray-900">{item.quantity}</span>
                   <button onClick={() => updateQuantity(item.id, item.color, item.size, 1)} className="px-3 py-1 hover:bg-gray-200 text-gray-600 font-bold">+</button>
                 </div>
-                <button onClick={() => removeFromCart(item.id, item.color, item.size)} className="text-red-500 hover:text-red-700 p-1">
+              
+                <button 
+                  onClick={() => handleDeleteConfirm(item.id, item.color, item.size, item.name)} 
+                  className="text-red-500 hover:text-red-700 p-1 transition-colors"
+                >
                   <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
                     <path fillRule="evenodd" d="M9 2a1 1 0 00-.894.553L7.382 4H4a1 1 0 000 2v10a2 2 0 002 2h8a2 2 0 002-2V6a1 1 0 100-2h-3.382l-.724-1.447A1 1 0 0011 2H9zM7 8a1 1 0 012 0v6a1 1 0 11-2 0V8zm5-1a1 1 0 00-1 1v6a1 1 0 102 0V8a1 1 0 00-1-1z" clipRule="evenodd" />
                   </svg>

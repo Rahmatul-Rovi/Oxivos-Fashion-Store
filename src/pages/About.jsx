@@ -4,11 +4,10 @@ export default function About() {
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 space-y-20">
       
-      {/* Hero Intro */}
-      <div className="text-center max-w-3xl mx-auto space-y-4">
+     <div className="text-center max-w-3xl mx-auto space-y-4">
         <span className="text-xs font-bold text-indigo-600 uppercase tracking-widest bg-indigo-50 px-3 py-1.5 rounded-full">
           Who We Are
-        </span>
+     </span>
         <h1 className="text-4xl sm:text-6xl font-black text-gray-950 tracking-tight leading-none">
           WE DEFINE MODERN <br />
           <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 to-pink-500">MINIMALIST FASHION</span>
@@ -18,7 +17,6 @@ export default function About() {
         </p>
       </div>
 
-      {/* 3-Column Core Values Grid */}
       <div className="grid grid-cols-1 md:grid-cols-3 gap-8 border-y border-gray-100 py-12">
         <div className="space-y-2">
          
@@ -43,9 +41,8 @@ export default function About() {
         </div>
       </div>
 
-      {/* Two Column Journey/Philosophy Section */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-        <div className="rounded-2xl overflow-hidden h-[350px] shadow-sm">
+     <div className="rounded-2xl overflow-hidden h-[350px] shadow-sm">
           <img 
             src="https://images.unsplash.com/photo-1490481651871-ab68de25d43d?w=600&auto=format&fit=crop&q=80" 
             alt="Our Workspace" 

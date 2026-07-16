@@ -9,7 +9,6 @@ export default function Contact() {
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 space-y-12">
       
-      {/* Header */}
       <div className="text-center space-y-3 max-w-xl mx-auto">
         <span className="text-xs font-bold text-indigo-600 uppercase tracking-widest bg-indigo-50 px-3 py-1.5 rounded-full">
           Get In Touch
@@ -20,10 +19,8 @@ export default function Contact() {
         </p>
       </div>
 
-      {/* Main Split Layout */}
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 pt-6">
         
-        {/* Left Side: Contact Information (5 Columns) */}
         <div className="lg:col-span-5 space-y-8 bg-gray-50 p-8 rounded-2xl border border-gray-100 flex flex-col justify-between">
           <div className="space-y-6">
             <h3 className="text-xl font-bold text-gray-900">Contact Information</h3>
@@ -56,11 +53,9 @@ export default function Contact() {
             </div>
           </div>
 
-          {/* Social Links */}
          
         </div>
 
-        {/* Right Side: Contact Form (7 Columns) */}
         <div className="lg:col-span-7 bg-white border border-gray-100 p-8 rounded-2xl shadow-sm">
           <h3 className="text-xl font-bold text-gray-900 mb-6">Send a Message</h3>
           

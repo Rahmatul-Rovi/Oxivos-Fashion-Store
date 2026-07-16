@@ -15,7 +15,6 @@ export default function Home() {
     
      <div className="bg-gray-50 rounded-2xl border border-gray-100 overflow-hidden grid grid-cols-1 md:grid-cols-2 items-center gap-8 p-8 sm:p-12">
   
-  {/* Left Side: Clean Text Content */}
   <div className="flex flex-col items-start text-left space-y-4">
     <span className="text-xs font-bold text-indigo-600 uppercase tracking-widest">
       New Arrivals 2026
@@ -34,7 +33,6 @@ export default function Home() {
     </RouterLink>
   </div>
 
-  {/* Right Side: Beautiful Aesthetic Fashion Image */}
   <div className="h-[300px] sm:h-[380px] w-full rounded-xl overflow-hidden shadow-sm">
     <img 
       src="https://i.ibb.co.com/ksY5bJpj/womens-fashion-1.jpg" 

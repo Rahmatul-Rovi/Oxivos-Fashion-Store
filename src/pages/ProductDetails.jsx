@@ -1,11 +1,12 @@
 import React, { useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 import { products } from '../data/products';
 import { useCart } from '../context/CartContext';
 import Swal from 'sweetalert2';
 
 export default function ProductDetails() {
   const { id } = useParams();
+  const navigate = useNavigate();
   const { addToCart } = useCart();
   const product = products.find(p => p.id === parseInt(id));
 
@@ -17,7 +18,7 @@ export default function ProductDetails() {
   const handleAdd = () => {
     addToCart(product, color, size);
     
-   Swal.fire({
+    Swal.fire({
       title: 'Added to Cart!',
       text: `${product.name} (${color} - ${size}) has been added to your shopping cart.`,
       icon: 'success',
@@ -30,6 +31,10 @@ export default function ProductDetails() {
         title: 'text-xl font-bold text-gray-950',
         htmlContainer: 'text-xs text-gray-500 mt-2',
         confirmButton: 'px-6 py-2.5 text-xs font-bold tracking-wider rounded-xl focus:outline-none'
+      }
+    }).then((result) => {
+      if (result.isConfirmed) {
+        navigate('/products'); 
       }
     });
   };
