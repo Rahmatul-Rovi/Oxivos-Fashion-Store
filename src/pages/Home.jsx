@@ -13,23 +13,37 @@ export default function Home() {
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-16 pt-6">
     
-      <div className="bg-gray-200 rounded-2xl p-8 sm:p-12 flex flex-col items-center text-center border border-gray-100">
-        <span className="text-xs font-bold text-indigo-600 uppercase tracking-widest mb-3">
-          New Arrivals 2026
-        </span>
-        <h1 className="text-3xl sm:text-5xl font-extrabold text-gray-950 tracking-tight max-w-xl leading-tight">
-          Modern Elegance. <br />Everyday Comfort.
-        </h1>
-        <p className="text-gray-500 text-xs sm:text-sm max-w-md mt-3 mb-6 leading-relaxed">
-          Explore our latest collection crafted carefully with premium fabrics for a clean and minimalist look.
-        </p>
-        <RouterLink 
-          to="/products" 
-          className="bg-gray-900 text-white text-xs font-bold tracking-wider px-6 py-3 rounded-lg hover:bg-indigo-600 transition-colors shadow-sm"
-        >
-          SHOP THE COLLECTION
-        </RouterLink>
-      </div>
+     <div className="bg-gray-50 rounded-2xl border border-gray-100 overflow-hidden grid grid-cols-1 md:grid-cols-2 items-center gap-8 p-8 sm:p-12">
+  
+  {/* Left Side: Clean Text Content */}
+  <div className="flex flex-col items-start text-left space-y-4">
+    <span className="text-xs font-bold text-indigo-600 uppercase tracking-widest">
+      New Arrivals 2026
+    </span>
+    <h1 className="text-3xl sm:text-5xl font-extrabold text-gray-950 tracking-tight leading-tight">
+      Modern Elegance. <br />Everyday Comfort.
+    </h1>
+    <p className="text-gray-500 text-xs sm:text-sm max-w-md leading-relaxed">
+      Explore our latest collection crafted carefully with premium fabrics for a clean and minimalist look.
+    </p>
+    <RouterLink 
+      to="/products" 
+      className="inline-block bg-gray-950 text-white text-xs font-bold tracking-widest px-6 py-3.5 rounded-lg hover:bg-indigo-600 transition-colors shadow-sm"
+    >
+      SHOP THE COLLECTION
+    </RouterLink>
+  </div>
+
+  {/* Right Side: Beautiful Aesthetic Fashion Image */}
+  <div className="h-[300px] sm:h-[380px] w-full rounded-xl overflow-hidden shadow-sm">
+    <img 
+      src="https://i.ibb.co.com/ksY5bJpj/womens-fashion-1.jpg" 
+      alt="Oxivos Minimalist Fashion" 
+      className="w-full h-full object-cover object-center hover:scale-105 transition-transform duration-700 ease-out"
+    />
+  </div>
+
+</div>
 
       <div className="border-y border-gray-100 py-6">
         <p className="text-center text-xs font-bold text-gray-400 uppercase tracking-widest mb-4">
