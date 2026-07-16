@@ -46,7 +46,7 @@ export default function Home() {
 </div>
 
       <div className="border-y border-gray-100 py-6">
-        <p className="text-center text-xs font-bold text-gray-400 uppercase tracking-widest mb-4">
+        <p className="text-center text-xs font-bold text-gray-600 uppercase tracking-widest mb-4">
           Browse by Category
         </p>
         <div className="flex flex-wrap justify-center gap-3">
