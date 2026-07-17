@@ -1,12 +1,13 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link, NavLink } from 'react-router-dom';
 import { useCart } from '../context/CartContext';
 
 export default function Navbar() {
   const { cartCount } = useCart();
+  const [isOpen, setIsOpen] = useState(false);
 
   const linkStyle = ({ isActive }) => 
-    `font-semibold text-xs tracking-wider transition-colors uppercase ${
+    `font-semibold text-xs tracking-wider transition-colors uppercase block md:inline-block ${
       isActive ? 'text-indigo-600' : 'text-gray-600 hover:text-indigo-600'
     }`;
 
@@ -14,11 +15,25 @@ export default function Navbar() {
     <nav className="sticky top-0 z-50 bg-white shadow-sm border-b border-gray-100">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
         
-        <div className="flex-shrink-0">
+        <div className="flex items-center space-x-3">
+          <button 
+            onClick={() => setIsOpen(!isOpen)} 
+            className="md:hidden p-2 rounded-lg text-gray-600 hover:text-indigo-600 hover:bg-gray-50 transition-colors focus:outline-none"
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              {isOpen ? (
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+              ) : (
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+              )}
+            </svg>
+          </button>
+
           <Link to="/" className="text-2xl font-black tracking-wider text-gray-900">
             OXIVOS <span className="text-indigo-600">STUDIO</span>
           </Link>
         </div>
+
         <div className="hidden md:flex items-center space-x-8">
           <NavLink to="/" className={linkStyle}>HOME</NavLink>
           <NavLink to="/products" className={linkStyle}>SHOP</NavLink>
@@ -39,7 +54,7 @@ export default function Navbar() {
           </Link>
           
           <Link 
-            to="" 
+            to="/login" 
             className="text-xs font-bold text-gray-950 tracking-wider hover:text-indigo-600 transition-colors uppercase"
           >
             LOGIN
@@ -47,6 +62,15 @@ export default function Navbar() {
         </div>
 
       </div>
+
+      {isOpen && (
+        <div className="md:hidden bg-white border-t border-gray-100 px-4 py-4 space-y-4 shadow-inner">
+          <NavLink to="/" onClick={() => setIsOpen(false)} className={linkStyle}>HOME</NavLink>
+          <NavLink to="/products" onClick={() => setIsOpen(false)} className={linkStyle}>SHOP</NavLink>
+          <NavLink to="/about" onClick={() => setIsOpen(false)} className={linkStyle}>ABOUT US</NavLink>
+          <NavLink to="/contact" onClick={() => setIsOpen(false)} className={linkStyle}>CONTACT US</NavLink>
+        </div>
+      )}
     </nav>
   );
 }
